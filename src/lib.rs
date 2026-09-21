@@ -106,6 +106,7 @@ pub fn readable_name_custom<R: Rng>(separator: &str, mut rng: R) -> String {
 /// Should not panic, would panic if there were no ADJECTIVES or if NAMES (both constants guaranteed not to be empty)
 #[must_use]
 pub fn readable_name_custom_suffix<R: Rng>(separator: &str, mut rng: R) -> String {
+    use rand::RngExt;
     let suffix = rng.random_range(0..=9);
 
     format!("{}{}", readable_name_custom(separator, &mut rng), suffix)
